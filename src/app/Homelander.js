@@ -19,9 +19,9 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import BookingModal from "./components/bookingModal/BookingModal";
 import { restaurantInfo } from "./utils/data";
-import "./page.css";
+import "./styles/homelander.css";
 
-export default function Home() {
+export default function Homelander() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
