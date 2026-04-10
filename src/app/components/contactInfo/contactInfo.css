@@ -1,0 +1,120 @@
+.contact-info {
+  padding: 60px 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 60px;
+}
+
+.contact-card {
+  background: var(--background-white);
+  padding: 32px;
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.contact-card h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: var(--primary-red);
+}
+
+.contact-link {
+  display: block;
+  color: var(--primary-green);
+  font-weight: 600;
+  margin: 8px 0;
+  transition: var(--transition);
+}
+
+.contact-link:hover {
+  color: var(--primary-green-dark);
+  transform: translateX(5px);
+}
+
+.contact-card p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.contact-map-btn {
+  background: var(--primary-red);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 40px;
+  margin-top: 16px;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.contact-map-btn:hover {
+  background: var(--primary-red-dark);
+  transform: translateY(-2px);
+}
+
+.contact-social {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(192,57,43,0.05), rgba(39,174,96,0.05));
+  border-radius: var(--border-radius-lg);
+}
+
+.contact-social h3 {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: var(--text-dark);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  padding: 14px 32px;
+  border-radius: 40px;
+  color: white;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 768px) {
+  .contact-info {
+    padding: 40px 0;
+  }
+  
+  .contact-card {
+    padding: 24px;
+  }
+  
+  .contact-icon {
+    font-size: 36px;
+  }
+  
+  .contact-card h3 {
+    font-size: 18px;
+  }
+  
+  .social-link {
+    padding: 12px 24px;
+  }
+}

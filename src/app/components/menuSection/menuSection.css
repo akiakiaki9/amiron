@@ -1,0 +1,125 @@
+.menu-section {
+    padding: 60px 0;
+    background: var(--background-off-white);
+}
+
+.menu-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.menu-category {
+    background: var(--background-white);
+    border-radius: var(--border-radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.menu-category:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.category-header h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-red);
+    white-space: nowrap;
+}
+
+.category-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-red), var(--primary-green));
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--gray-light);
+    transition: var(--transition);
+}
+
+.menu-item:hover {
+    transform: translateX(8px);
+    border-bottom-color: var(--primary-red);
+}
+
+.menu-item-info {
+    flex: 1;
+}
+
+.menu-item-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.spicy-badge {
+    font-size: 14px;
+}
+
+.menu-item-description {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.menu-item-price {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--primary-green);
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .menu-section {
+        padding: 40px 0;
+    }
+
+    .menu-category {
+        padding: 24px;
+    }
+
+    .category-header h3 {
+        font-size: 20px;
+    }
+
+    .menu-item {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .menu-item-name {
+        font-size: 16px;
+    }
+
+    .menu-item-price {
+        font-size: 16px;
+    }
+
+    .menu-item:hover {
+        transform: translateX(4px);
+    }
+}
