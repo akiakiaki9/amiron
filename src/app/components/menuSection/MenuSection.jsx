@@ -1,3 +1,4 @@
+"use client"
 import "./menuSection.css";
 
 export default function MenuSection({ title, description, menu }) {

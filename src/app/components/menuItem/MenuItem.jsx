@@ -1,3 +1,4 @@
+"use client"
 import "./menuItem.css";
 
 export default function MenuItem({ name, price, description, image }) {
