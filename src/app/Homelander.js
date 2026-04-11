@@ -99,7 +99,7 @@ export default function Homelander() {
                 <section className="hero">
                     <div className="hero-video-wrapper">
                         <video className="hero-video" autoPlay loop muted playsInline>
-                            <source src="/video/restaurant-bg.mp4" type="video/mp4" />
+                            <source src="/videos/hero.mp4" type="video/mp4" />
                         </video>
                         <div className="hero-overlay"></div>
                     </div>
