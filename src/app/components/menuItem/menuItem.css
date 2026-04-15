@@ -1,20 +1,25 @@
-.menu-item-card {
-    background: var(--background-white);
-    border-radius: var(--border-radius-lg);
+.menu-item {
+    background: white;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-    display: flex;
-    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
 }
 
-.menu-item-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+.menu-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.menu-item.hovered {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(220, 53, 69, 0.15);
 }
 
 .menu-item-image {
-    height: 200px;
+    position: relative;
+    height: 220px;
     overflow: hidden;
 }
 
@@ -22,14 +27,60 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition-slow);
+    transition: transform 0.5s ease;
 }
 
-.menu-item-card:hover .menu-item-image img {
+.menu-item:hover .menu-item-image img {
+    transform: scale(1.08);
+}
+
+.menu-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.9), rgba(76, 175, 80, 0.9));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover .menu-item-overlay {
+    opacity: 1;
+}
+
+.order-btn {
+    background: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-red);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.menu-item:hover .order-btn {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.order-btn:hover {
+    background: var(--primary-red);
+    color: white;
     transform: scale(1.05);
 }
 
-.menu-item-details {
+.menu-item-content {
     padding: 20px;
 }
 
@@ -37,52 +88,73 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-    gap: 8px;
+    margin-bottom: 12px;
 }
 
 .menu-item-name {
     font-size: 18px;
     font-weight: 600;
-    color: var(--text-dark);
+    color: #333;
+    margin: 0;
+    flex: 1;
 }
 
 .menu-item-price {
-    font-weight: 700;
-    color: var(--primary-green);
     font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-red);
+    white-space: nowrap;
+    margin-left: 12px;
 }
 
 .menu-item-description {
     font-size: 14px;
-    color: var(--text-light);
-    margin-bottom: 16px;
+    color: #666;
     line-height: 1.5;
+    margin: 0 0 12px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.menu-item-order {
-    background: var(--primary-red);
-    color: white;
-    padding: 8px 20px;
-    border-radius: 40px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: var(--transition);
+.mobile-order-btn {
+    display: none;
     width: 100%;
+    background: linear-gradient(135deg, var(--primary-red), #c82333);
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    transition: all 0.3s ease;
 }
 
-.menu-item-order:hover {
-    background: var(--primary-red-dark);
-    transform: translateY(-2px);
+.mobile-order-btn:hover {
+    transform: scale(1.02);
+    background: linear-gradient(135deg, #c82333, var(--primary-red));
 }
 
 @media (max-width: 768px) {
     .menu-item-image {
-        height: 160px;
+        height: 180px;
     }
 
-    .menu-item-details {
+    .menu-item-overlay {
+        display: none;
+    }
+
+    .mobile-order-btn {
+        display: flex;
+    }
+
+    .menu-item-content {
         padding: 16px;
     }
 
