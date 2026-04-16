@@ -10,9 +10,10 @@ import {
     FiInstagram,
     FiUser,
     FiFileText,
-    FiLoader
+    FiLoader,
+    FiStar
 } from "react-icons/fi";
-import { FaWhatsapp, FaTelegram, FaTiktok } from "react-icons/fa";
+import { FaTelegram, FaTiktok } from "react-icons/fa";
 import { GiKnifeFork } from "react-icons/gi";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
@@ -25,8 +26,10 @@ export default function ContactsPage() {
     const [formData, setFormData] = useState({
         name: "",
         phone: "",
+        rating: 5,
         message: ""
     });
+    const [hoveredRating, setHoveredRating] = useState(0);
     const [formStatus, setFormStatus] = useState({
         submitted: false,
         success: false,
@@ -34,74 +37,63 @@ export default function ContactsPage() {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Telegram администратора (замените на реальный username)
-    const TELEGRAM_ADMIN = "akbarsoftowner"; // Username администратора в Telegram
-    // Или можно использовать номер телефона (но лучше username)
-    // const TELEGRAM_PHONE = "998900830707";
-
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    // Форматирование сообщения для Telegram
-    const formatTelegramMessage = () => {
-        const currentDate = new Date().toLocaleString('ru-RU', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        });
-
-        return `📞 НОВОЕ СООБЩЕНИЕ С САЙТА!
-
-👤 Имя: ${formData.name}
-📱 Телефон: ${formData.phone}
-💬 Сообщение: ${formData.message}
-🕐 Время: ${currentDate}
-
-📍 Отправлено с сайта Amiron Restaurant
-🌐 Страница: Контакты / Обратная связь`;
+    const handleRatingChange = (rating) => {
+        setFormData(prev => ({ ...prev, rating }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setFormStatus({ submitted: false, success: false, message: "" });
 
         try {
-            const messageText = formatTelegramMessage();
-
-            // Отправка в Telegram через username администратора
-            const telegramUrl = `https://t.me/${TELEGRAM_ADMIN}?text=${encodeURIComponent(messageText)}`;
-
-            // Открываем Telegram с готовым сообщением
-            window.open(telegramUrl, '_blank');
-
-            setFormStatus({
-                submitted: true,
-                success: true,
-                message: "Сообщение отправлено! Мы свяжемся с вами в ближайшее время."
+            const response = await fetch('/api/send-review', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
             });
 
-            // Очищаем форму
-            setFormData({ name: "", phone: "", message: "" });
+            const data = await response.json();
 
-            // Скрываем сообщение через 5 секунд
-            setTimeout(() => {
-                setFormStatus({ submitted: false, success: false, message: "" });
-            }, 5000);
+            if (data.success) {
+                setFormStatus({
+                    submitted: true,
+                    success: true,
+                    message: data.message || "Спасибо за ваш отзыв! Мы ценим ваше мнение."
+                });
 
+                // Очищаем форму
+                setFormData({
+                    name: "",
+                    phone: "",
+                    rating: 5,
+                    message: ""
+                });
+                setHoveredRating(0);
+            } else {
+                throw new Error(data.message || "Ошибка отправки");
+            }
         } catch (error) {
             console.error('Ошибка отправки:', error);
             setFormStatus({
                 submitted: true,
                 success: false,
-                message: "Произошла ошибка. Пожалуйста, позвоните нам по телефону."
+                message: "Произошла ошибка при отправке отзыва. Пожалуйста, попробуйте позже."
             });
         } finally {
             setIsSubmitting(false);
+
+            // Скрываем сообщение через 5 секунд
+            setTimeout(() => {
+                setFormStatus(prev => ({ ...prev, submitted: false }));
+            }, 5000);
         }
     };
 
@@ -115,6 +107,27 @@ export default function ContactsPage() {
         window.open(`https://t.me/${cleanPhone}`, '_blank');
     };
 
+    // Компонент звездного рейтинга
+
+    const StarRating = ({ rating, onRatingChange, onHover, hoveredRating }) => {
+        return (
+            <div className="star-rating">
+                {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                        key={star}
+                        type="button"
+                        className={`star-btn ${star <= (hoveredRating || rating) ? 'active' : ''}`}
+                        onClick={() => onRatingChange(star)}
+                        onMouseEnter={() => onHover(star)}
+                        onMouseLeave={() => onHover(0)}
+                    >
+                        <FiStar />
+                    </button>
+                ))}
+            </div>
+        );
+    };
+
     const contactCards = [
         {
             icon: <FiPhone />,
@@ -123,17 +136,6 @@ export default function ContactsPage() {
                 value: phone,
                 link: `tel:${phone}`,
                 action: "Позвонить"
-            })),
-            color: "green"
-        },
-        {
-            icon: <FaWhatsapp />,
-            title: "WhatsApp",
-            items: restaurantInfo.phones.map(phone => ({
-                value: phone,
-                link: "#",
-                action: "Написать",
-                onClick: () => openWhatsApp(phone)
             })),
             color: "green"
         },
@@ -185,10 +187,10 @@ export default function ContactsPage() {
                         <div className="contacts-hero-content">
                             <div className="hero-badge">
                                 <FiSend />
-                                <span>Свяжитесь с нами</span>
+                                <span>Оставьте отзыв</span>
                             </div>
-                            <h1>Контакты</h1>
-                            <p>Мы всегда на связи и готовы ответить на ваши вопросы</p>
+                            <h1>Ваше мнение важно для нас</h1>
+                            <p>Поделитесь впечатлениями о посещении ресторана</p>
                         </div>
                     </div>
                 </section>
@@ -252,7 +254,7 @@ export default function ContactsPage() {
                     </div>
                 </section>
 
-                {/* Feedback Form Section */}
+                {/* Review Form Section */}
                 <section className="feedback-section">
                     <div className="container">
                         <div className="feedback-wrapper">
@@ -260,27 +262,27 @@ export default function ContactsPage() {
                                 <div className="feedback-info-content">
                                     <div className="info-badge">
                                         <GiKnifeFork />
-                                        <span>Обратная связь</span>
+                                        <span>Оставить отзыв</span>
                                     </div>
-                                    <h2>Остались вопросы?</h2>
-                                    <p>Заполните форму и мы свяжемся с вами в ближайшее время</p>
+                                    <h2>Поделитесь впечатлениями</h2>
+                                    <p>Ваше мнение помогает нам становиться лучше</p>
                                     <div className="info-features">
                                         <div className="info-feature">
                                             <FiCheckCircle />
-                                            <span>Быстрый ответ</span>
+                                            <span>Анонимно или с именем</span>
                                         </div>
                                         <div className="info-feature">
                                             <FiCheckCircle />
-                                            <span>Консультация специалиста</span>
+                                            <span>Быстрая обратная связь</span>
                                         </div>
                                         <div className="info-feature">
                                             <FiCheckCircle />
-                                            <span>Лучшие предложения</span>
+                                            <span>Все отзывы читает шеф-повар</span>
                                         </div>
                                     </div>
                                     <div className="info-note">
                                         <FaTelegram />
-                                        <span>Сообщение будет отправлено администратору в Telegram</span>
+                                        <span>Отзыв будет отправлен администратору в Telegram</span>
                                     </div>
                                 </div>
                             </div>
@@ -307,7 +309,7 @@ export default function ContactsPage() {
                                     <div className="form-group">
                                         <label htmlFor="phone">
                                             <FiPhone className="label-icon" />
-                                            Телефон
+                                            Телефон (необязательно)
                                         </label>
                                         <input
                                             type="tel"
@@ -316,23 +318,35 @@ export default function ContactsPage() {
                                             value={formData.phone}
                                             onChange={handleInputChange}
                                             placeholder="+998 90 123 45 67"
-                                            required
                                             disabled={isSubmitting}
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>
+                                            <FiStar className="label-icon" />
+                                            Ваша оценка
+                                        </label>
+                                        <StarRating
+                                            rating={formData.rating}
+                                            onRatingChange={handleRatingChange}
+                                            onHover={setHoveredRating}
+                                            hoveredRating={hoveredRating}
                                         />
                                     </div>
 
                                     <div className="form-group">
                                         <label htmlFor="message">
                                             <FiFileText className="label-icon" />
-                                            Сообщение
+                                            Ваш отзыв
                                         </label>
                                         <textarea
                                             id="message"
                                             name="message"
                                             value={formData.message}
                                             onChange={handleInputChange}
-                                            placeholder="Ваш вопрос или пожелание..."
-                                            rows="4"
+                                            placeholder="Расскажите о вашем визите: что понравилось, что можно улучшить, какие блюда особенно запомнились..."
+                                            rows="5"
                                             required
                                             disabled={isSubmitting}
                                         ></textarea>
@@ -346,12 +360,12 @@ export default function ContactsPage() {
                                         {isSubmitting ? (
                                             <>
                                                 <FiLoader className="btn-icon spin" />
-                                                Отправка...
+                                                Отправка отзыва...
                                             </>
                                         ) : (
                                             <>
                                                 <FiSend className="btn-icon" />
-                                                Отправить сообщение
+                                                Отправить отзыв
                                             </>
                                         )}
                                     </button>

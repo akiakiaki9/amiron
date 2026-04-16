@@ -175,6 +175,32 @@
     padding: 60px 0;
 }
 
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary-red);
+    margin-bottom: 12px;
+}
+
+.section-header h2 {
+    font-size: 36px;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.section-header p {
+    color: var(--text-light);
+    font-size: 16px;
+}
+
 .map-container {
     border-radius: var(--border-radius-lg);
     overflow: hidden;
@@ -276,6 +302,24 @@
     font-size: 18px;
 }
 
+.info-note {
+    margin-top: 24px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.info-note svg {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
 .feedback-form-wrapper {
     padding: 48px;
 }
@@ -327,6 +371,55 @@
     color: var(--gray-dark);
 }
 
+/* Стили для звездного рейтинга */
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    transition: var(--transition);
+    font-size: 32px;
+    color: #e0e0e0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.star-btn:hover {
+    transform: scale(1.1);
+}
+
+.star-btn.active {
+    color: #FFD700;
+}
+
+.star-btn svg {
+    fill: currentColor;
+    stroke: #FFD700;
+    stroke-width: 1;
+}
+
+/* Анимация для звезд при наведении */
+@keyframes starPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.star-btn:hover {
+    animation: starPulse 0.3s ease;
+}
+
 .submit-btn {
     background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
     color: white;
@@ -355,6 +448,19 @@
 
 .btn-icon {
     font-size: 18px;
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .form-message {
@@ -588,6 +694,10 @@
         padding: 40px 0;
     }
 
+    .section-header h2 {
+        font-size: 28px;
+    }
+
     .map-container iframe {
         height: 300px;
     }
@@ -645,62 +755,8 @@
     .info-feature {
         font-size: 13px;
     }
-}   
 
-/* Добавьте эти стили в конец файла page.css */
-
-/* Спиннер для кнопки */
-.spin {
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
+    .star-btn {
+        font-size: 28px;
     }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Информационная заметка */
-.info-note {
-    margin-top: 24px;
-    padding: 12px 16px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: var(--border-radius-md);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.info-note svg {
-    font-size: 18px;
-    flex-shrink: 0;
-}
-
-/* Дополнительные улучшения для карточек */
-.contact-card {
-    cursor: pointer;
-}
-
-.contact-card .contact-action {
-    cursor: pointer;
-}
-
-/* Анимация для успешной отправки */
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.02);
-    }
-}
-
-.form-message.success {
-    animation: pulse 0.5s ease;
 }

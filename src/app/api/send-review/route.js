@@ -1,0 +1,57 @@
+// src/app/api/send-review/route.js
+export async function POST(request) {
+    try {
+        const { name, phone, message, rating } = await request.json();
+
+        const botToken = process.env.TELEGRAM_BOT_TOKEN;
+        const adminId = process.env.TELEGRAM_ADMIN_ID;
+
+        if (!botToken || !adminId) {
+            console.error('Missing TELEGRAM_BOT_TOKEN or TELEGRAM_ADMIN_ID');
+            return Response.json({
+                success: false,
+                message: 'Ошибка конфигурации сервера'
+            }, { status: 500 });
+        }
+
+        // Создаем строку с звездочками для оценки
+        const stars = '⭐'.repeat(rating) + '☆'.repeat(5 - rating);
+
+        const text = `📝 **Новый отзыв в ресторане AMIRON!**\n\n` +
+            `👤 **Имя:** ${name}\n` +
+            `📞 **Телефон:** ${phone || 'Не указан'}\n` +
+            `⭐ **Оценка:** ${rating}/5 ${stars}\n` +
+            `💬 **Отзыв:** ${message}\n\n` +
+            `🕐 **Дата:** ${new Date().toLocaleString('ru-RU')}`;
+
+        const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: adminId,
+                text: text,
+                parse_mode: 'Markdown',
+            }),
+        });
+
+        const data = await response.json();
+
+        if (data.ok) {
+            return Response.json({ success: true, message: 'Отзыв отправлен! Спасибо за вашу оценку!' });
+        } else {
+            console.error('Telegram API error:', data);
+            return Response.json({
+                success: false,
+                message: data.description || 'Ошибка отправки в Telegram'
+            }, { status: 500 });
+        }
+    } catch (error) {
+        console.error('Server error:', error);
+        return Response.json({
+            success: false,
+            message: error.message || 'Внутренняя ошибка сервера'
+        }, { status: 500 });
+    }
+};

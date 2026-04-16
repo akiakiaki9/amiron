@@ -18,6 +18,7 @@ import { FaUtensils, FaGlassCheers } from "react-icons/fa";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import BookingModal from "./components/bookingModal/BookingModal";
+import HomeReview from "./components/homeReview/HomeReivew";
 import { restaurantInfo } from "./utils/data";
 import "./styles/homelander.css";
 
@@ -211,6 +212,9 @@ export default function Homelander() {
                         </div>
                     </div>
                 </section>
+
+                {/* Секция отзывов - ДОБАВЛЯЕМ КОМПОНЕНТ */}
+                <HomeReview />
 
                 {/* CTA Секция */}
                 <section className="cta-section">
