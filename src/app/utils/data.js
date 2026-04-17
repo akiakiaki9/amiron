@@ -7,7 +7,7 @@ export const menuData = {
         area: "250 м²",
         features: ["VIP зона", "Танцпол", "Сцена", "Караоке", "Светомузыка"],
         image: "https://images.unsplash.com/photo-1519167758483-8c5e8c6a2b8d?w=800",
-        video: "/videos/wedding-hall.mp4",
+        video: "/videos/wedding.MP4",
         menu: [
             {
                 category: "Холодные закуски",
