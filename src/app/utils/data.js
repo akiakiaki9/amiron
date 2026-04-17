@@ -3,7 +3,7 @@ export const menuData = {
     weddingHall: {
         title: "Свадебный зал",
         description: "Роскошный зал для проведения свадебных торжеств до 200 гостей",
-        capacity: "до 200 гостей",
+        capacity: "до 300 гостей",
         area: "250 м²",
         features: ["VIP зона", "Танцпол", "Сцена", "Караоке", "Светомузыка"],
         image: "https://images.unsplash.com/photo-1519167758483-8c5e8c6a2b8d?w=800",
@@ -45,7 +45,7 @@ export const menuData = {
     commonHall: {
         title: "Общий зал",
         description: "Уютный зал для семейных обедов и встреч с друзьями",
-        capacity: "до 50 гостей",
+        capacity: "до 120 гостей",
         area: "80 м²",
         features: ["Уютная атмосфера", "Семейная обстановка", "Быстрое обслуживание", "Детское меню", "Wi-Fi"],
         image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
@@ -55,18 +55,18 @@ export const menuData = {
                 category: "Салаты",
                 items: [
                     { name: "Салат греческий", price: "25 000", description: "Свежие овощи, фета, оливки, соус", image: "/images/menu/1.png" },
-                    { name: "Амирон салат", price: "30 000", description: "Авторский салат от шеф-повара", image: "/images/menu/2.png" },
-                    { name: "Салат баклажан", price: "30 000", description: "Печеные баклажаны с орехами", image: "/images/menu/3.png" }
+                    { name: "Амирон салат", price: "30 000", description: "Авторский салат от шеф-повара", image: "/images/menu/4.png" },
+                    { name: "Салат баклажан", price: "30 000", description: "Печеные баклажаны с орехами", image: "/images/menu/5.png" }
                 ]
             },
             {
                 category: "Горячие блюда",
                 items: [
-                    { name: "Шашлык Кусквой", price: "130 000", description: "Нежнейший шашлык из вырезки", image: "/images/menu/4.png" },
-                    { name: "Шашлык Куфта", price: "120 000", description: "Сочный шашлык из фарша", image: "/images/menu/5.png" },
-                    { name: "Парной тушёнка", price: "270 000", description: "Тушеная говядина с овощами (1 кг)", image: "/images/menu/6.png" },
-                    { name: "Вагурри", price: "250 000", description: "Мраморная говядина по-восточному (1 кг)", image: "/images/menu/7.png" },
-                    { name: "Мангал куриный", price: "95 000", description: "Курица на мангале с пряностями", image: "/images/menu/8.png" }
+                    { name: "Шашлык Кусквой", price: "130 000", description: "Нежнейший шашлык из вырезки", image: "/images/menu/2.png" },
+                    { name: "Шашлык Куфта", price: "120 000", description: "Сочный шашлык из фарша", image: "/images/menu/2.png" },
+                    { name: "Парной тушёнка", price: "270 000", description: "Тушеная говядина с овощами (1 кг)", image: "/images/menu/3.png" },
+                    { name: "Вагурри", price: "250 000", description: "Мраморная говядина по-восточному (1 кг)", image: "/images/menu/6.png" },
+                    { name: "Мангал куриный", price: "95 000", description: "Курица на мангале с пряностями", image: "/images/menu/7.png" }
                 ]
             },
             {
@@ -80,7 +80,7 @@ export const menuData = {
     terrace: {
         title: "Терраса",
         description: "Уютная летняя терраса с видом на город",
-        capacity: "до 80 гостей",
+        capacity: "до 200 гостей",
         area: "120 м²",
         features: ["Летний душ", "Зонты", "Музыка", "Вечерняя подсветка"],
         image: "https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=800",

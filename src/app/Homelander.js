@@ -57,7 +57,16 @@ export default function Homelander() {
             color: "red",
             features: ["до 200 гостей", "Подсветка", "Летний душ"],
             image: "/images/halls/terrace.png"
-        }
+        },
+        {
+            title: "Вип залы",
+            description: "Эксклюзивные пространства для особых мероприятий",
+            icon: <FiStar />,
+            href: "/vip-halls",
+            color: "red",
+            features: ["до 18 гостей", "Эксклюзивный интерьер", "Персональное обслуживание"],
+            image: "/images/halls/vip1.png"
+        },
     ];
 
     const advantages = [

@@ -23,7 +23,7 @@ export default function TerracePage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [activeCategory, setActiveCategory] = useState("all");
     const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
-    
+
     // Используем меню из commonHall (Общий зал)
     const hallData = menuData.terrace;
     const menuDataFromCommon = menuData.commonHall;
@@ -205,4 +205,4 @@ export default function TerracePage() {
             <Footer />
         </>
     );
-}
+};
