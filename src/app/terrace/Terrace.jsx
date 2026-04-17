@@ -6,10 +6,10 @@ import BookingModal from "../components/bookingModal/BookingModal";
 import HallHeader from "../components/hallHeader/HallHeader";
 import MenuItem from "../components/menuItem/MenuItem";
 import { menuData } from "../utils/data";
-import { 
-    FaUtensils, 
-    FaChevronRight, 
-    FaFilter, 
+import {
+    FaUtensils,
+    FaChevronRight,
+    FaFilter,
     FaPhoneAlt,
     FaTimes,
     FaStar,
@@ -17,31 +17,33 @@ import {
     FaCalendarAlt,
     FaSun
 } from "react-icons/fa";
-import { GiKnifeFork } from "react-icons/gi";
 import "./terrace.css";
 
 export default function TerracePage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [activeCategory, setActiveCategory] = useState("all");
     const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
-    const data = menuData.terrace;
+    
+    // Используем меню из commonHall (Общий зал)
+    const hallData = menuData.terrace;
+    const menuDataFromCommon = menuData.commonHall;
 
-    // Получаем все категории
-    const categories = ["all", ...data.menu.map(item => item.category)];
+    // Получаем все категории из меню Общего зала
+    const categories = ["all", ...menuDataFromCommon.menu.map(item => item.category)];
 
     // Фильтруем меню по выбранной категории
     const getFilteredMenu = () => {
         if (activeCategory === "all") {
-            return data.menu;
+            return menuDataFromCommon.menu;
         }
-        return data.menu.filter(item => item.category === activeCategory);
+        return menuDataFromCommon.menu.filter(item => item.category === activeCategory);
     };
 
     const filteredMenu = getFilteredMenu();
 
     // Функция звонка
     const handleOrderCall = () => {
-        window.location.href = "tel:+998944444445";
+        window.location.href = "tel:+998900830707";
     };
 
     // Открытие модалки бронирования
@@ -68,7 +70,7 @@ export default function TerracePage() {
     }, [isMobileFilterOpen]);
 
     // Подсчет общего количества блюд
-    const totalDishes = data.menu.reduce((acc, category) => acc + category.items.length, 0);
+    const totalDishes = menuDataFromCommon.menu.reduce((acc, category) => acc + category.items.length, 0);
 
     return (
         <>
@@ -77,13 +79,13 @@ export default function TerracePage() {
 
             <main>
                 <HallHeader
-                    title={data.title}
-                    description={data.description}
-                    image={data.image}
-                    capacity={data.capacity}
-                    area={data.area}
-                    features={data.features}
-                    onBooking={handleBooking}
+                    title={hallData.title}
+                    description={hallData.description}
+                    video={hallData.video}
+                    capacity={hallData.capacity}
+                    area={hallData.area}
+                    features={hallData.features}
+                    onBookingClick={handleBooking}
                 />
 
                 <section className="hall-menu terrace-menu">
@@ -91,10 +93,10 @@ export default function TerracePage() {
                         <div className="section-header">
                             <span className="section-tag">
                                 <FaSun className="tag-icon" />
-                                Летнее меню
+                                Наше меню
                             </span>
                             <h2>Меню террасы</h2>
-                            <p>Свежие и легкие блюда для летнего настроения</p>
+                            <p>Свежие и вкусные блюда для отличного настроения</p>
                             <div className="menu-stats">
                                 <span className="stat-badge">
                                     <FaFire className="stat-icon" />
@@ -102,7 +104,7 @@ export default function TerracePage() {
                                 </span>
                                 <span className="stat-badge">
                                     <FaStar className="stat-icon" />
-                                    Сезонное меню
+                                    Авторская кухня
                                 </span>
                             </div>
                         </div>
@@ -113,18 +115,18 @@ export default function TerracePage() {
                                 <div className="menu-sidebar-header">
                                     <FaUtensils className="sidebar-icon" />
                                     <h3>Категории меню</h3>
-                                    <button 
+                                    <button
                                         className="mobile-close-btn"
                                         onClick={() => setIsMobileFilterOpen(false)}
                                     >
                                         <FaTimes />
                                     </button>
                                 </div>
-                                
+
                                 <div className="sidebar-info">
                                     <p>Выберите категорию чтобы увидеть блюда</p>
                                 </div>
-                                
+
                                 <ul className="menu-categories-list">
                                     {categories.map((category, idx) => (
                                         <li key={idx}>
@@ -141,7 +143,7 @@ export default function TerracePage() {
                                         </li>
                                     ))}
                                 </ul>
-                                
+
                                 <div className="sidebar-order">
                                     <button onClick={handleBooking} className="sidebar-order-btn">
                                         <FaCalendarAlt />
@@ -157,7 +159,7 @@ export default function TerracePage() {
                             {/* Основной контент меню */}
                             <div className="menu-content">
                                 {/* Кнопка фильтра для мобильных устройств */}
-                                <button 
+                                <button
                                     className="mobile-filter-btn"
                                     onClick={() => setIsMobileFilterOpen(true)}
                                 >

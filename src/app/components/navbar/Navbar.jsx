@@ -50,8 +50,9 @@ export default function Navbar({ onBookingClick }) {
     const navItems = [
         { name: "Главная", href: "/" },
         { name: "Свадебный зал", href: "/wedding-hall" },
-        { name: "Банкетный зал", href: "/banquet-hall" },
+        { name: "Общий зал", href: "/common-hall" },
         { name: "Терраса", href: "/terrace" },
+        { name: "VIP залы", href: "/vip-halls" },
         { name: "Контакты", href: "/contacts" },
     ];
 
@@ -122,4 +123,4 @@ export default function Navbar({ onBookingClick }) {
             </div>
         </nav>
     );
-}
+};

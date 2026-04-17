@@ -1,0 +1,762 @@
+.vip-hall-card {
+    background: var(--background-white);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.vip-hall-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.vip-hall-card-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.vip-hall-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.vip-hall-card:hover .vip-hall-card-image img {
+    transform: scale(1.1);
+}
+
+.vip-hall-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.vip-hall-card:hover .vip-hall-card-overlay {
+    opacity: 1;
+}
+
+.vip-hall-price {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+    color: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    z-index: 2;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.vip-hall-gallery-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.vip-hall-card:hover .vip-hall-gallery-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.vip-hall-gallery-btn:hover {
+    background: var(--primary-red);
+    transform: translateY(-2px);
+}
+
+.vip-hall-card-content {
+    padding: 24px;
+}
+
+.vip-hall-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, rgba(192, 57, 43, 0.1), rgba(39, 174, 96, 0.1));
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary-red);
+}
+
+.badge-icon {
+    font-size: 12px;
+}
+
+.vip-hall-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.vip-hall-description {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.vip-hall-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.vip-stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.vip-stat svg {
+    color: var(--primary-green);
+    font-size: 16px;
+}
+
+.vip-hall-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.vip-feature {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    background: var(--gray-light);
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: var(--text-dark);
+}
+
+.vip-feature svg {
+    color: var(--primary-green);
+    font-size: 12px;
+}
+
+.vip-feature-more {
+    font-size: 12px;
+    background: var(--primary-red);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.vip-hall-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.vip-btn-primary {
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.vip-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(192, 57, 43, 0.3);
+}
+
+.vip-btn-secondary {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gray-light);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-dark);
+    font-size: 18px;
+}
+
+.vip-btn-secondary:hover {
+    background: var(--primary-red);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.vip-hall-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-red);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.vip-hall-link:hover {
+    gap: 12px;
+    color: var(--primary-green);
+}
+
+.link-icon {
+    transition: transform 0.3s ease;
+}
+
+.vip-hall-link:hover .link-icon {
+    transform: translateX(5px);
+}
+
+/* Галерея модальное окно */
+.gallery-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.gallery-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.gallery-image-container {
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.gallery-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.gallery-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.gallery-close:hover {
+    transform: scale(1.1);
+    color: var(--primary-red);
+}
+
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-nav.prev {
+    left: -70px;
+}
+
+.gallery-nav.next {
+    right: -70px;
+}
+
+.gallery-nav:hover {
+    background: var(--primary-red);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-counter {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .vip-hall-card-image {
+        height: 250px;
+    }
+
+    .vip-hall-title {
+        font-size: 20px;
+    }
+
+    .vip-hall-stats {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .gallery-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+    }
+
+    .gallery-nav.prev {
+        left: -50px;
+    }
+
+    .gallery-nav.next {
+        right: -50px;
+    }
+
+    .vip-hall-gallery-btn {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 576px) {
+    .vip-hall-stats {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .gallery-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+
+    .gallery-nav.prev {
+        left: -40px;
+    }
+
+    .gallery-nav.next {
+        right: -40px;
+    }
+}
+
+/* Добавьте эти стили в конец файла vipHallCard.css */
+
+/* Видео стили */
+.vip-hall-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.vip-hall-card:hover .vip-hall-video {
+    transform: scale(1.05);
+}
+
+/* Лоадер для видео */
+.video-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--primary-red);
+    border-right-color: var(--primary-green);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Кнопка play/pause для видео */
+.video-play-pause-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    z-index: 10;
+}
+
+.vip-hall-card:hover .video-play-pause-btn {
+    opacity: 1;
+}
+
+.video-play-pause-btn:hover {
+    background: var(--primary-red);
+    transform: translate(-50%, -50%) scale(1.1);
+    border-color: transparent;
+}
+
+/* Для мобильных устройств показываем кнопку всегда */
+@media (max-width: 768px) {
+    .video-play-pause-btn {
+        opacity: 1;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+/* Индикатор что это видео */
+.vip-hall-video-indicator {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.vip-hall-video-indicator svg {
+    font-size: 12px;
+}
+
+/* Модальное окно бронирования */
+.booking-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.booking-modal-content {
+    background: var(--background-white);
+    border-radius: 24px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.booking-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--gray-light);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-dark);
+    font-size: 18px;
+    z-index: 10;
+}
+
+.booking-modal-close:hover {
+    background: var(--primary-red);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.booking-modal-header {
+    text-align: center;
+    padding: 32px 32px 0;
+}
+
+.booking-modal-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.booking-modal-icon svg {
+    font-size: 32px;
+    color: white;
+}
+
+.booking-modal-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.booking-modal-header p {
+    color: var(--primary-red);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.booking-form {
+    padding: 24px 32px 32px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.input-icon {
+    font-size: 14px;
+    color: var(--primary-red);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--gray-light);
+    border-radius: 12px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+
+.form-group input:disabled,
+.form-group select:disabled,
+.form-group textarea:disabled {
+    background: var(--gray-light);
+    cursor: not-allowed;
+}
+
+.form-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.form-status.success {
+    background: rgba(39, 174, 96, 0.1);
+    color: var(--primary-green);
+    border: 1px solid rgba(39, 174, 96, 0.2);
+}
+
+.form-status.error {
+    background: rgba(192, 57, 43, 0.1);
+    color: var(--primary-red);
+    border: 1px solid rgba(192, 57, 43, 0.2);
+}
+
+.booking-submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.booking-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(192, 57, 43, 0.3);
+}
+
+.booking-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+
+    .booking-form {
+        padding: 20px 24px 24px;
+    }
+
+    .booking-modal-header {
+        padding: 24px 24px 0;
+    }
+
+    .booking-modal-header h2 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .booking-modal-content {
+        width: 95%;
+        border-radius: 20px;
+    }
+
+    .booking-form {
+        padding: 16px 20px 20px;
+    }
+
+    .booking-modal-icon {
+        width: 55px;
+        height: 55px;
+    }
+
+    .booking-modal-icon svg {
+        font-size: 25px;
+    }
+}

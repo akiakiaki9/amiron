@@ -14,15 +14,29 @@ export async function POST(request) {
             }, { status: 500 });
         }
 
-        // Создаем строку с звездочками для оценки
-        const stars = '⭐'.repeat(rating) + '☆'.repeat(5 - rating);
+        // Определяем тип сообщения (отзыв или бронирование)
+        const isBooking = message.includes('📅 Зал:') || message.includes('Дата:');
 
-        const text = `📝 **Новый отзыв в ресторане AMIRON!**\n\n` +
-            `👤 **Имя:** ${name}\n` +
-            `📞 **Телефон:** ${phone || 'Не указан'}\n` +
-            `⭐ **Оценка:** ${rating}/5 ${stars}\n` +
-            `💬 **Отзыв:** ${message}\n\n` +
-            `🕐 **Дата:** ${new Date().toLocaleString('ru-RU')}`;
+        let text = '';
+
+        if (isBooking) {
+            // Форматирование для бронирования
+            text = `🆕 **НОВОЕ БРОНИРОВАНИЕ!**\n\n` +
+                `${message}\n\n` +
+                `👤 **Имя:** ${name}\n` +
+                `📞 **Телефон:** ${phone}\n` +
+                `🕐 **Дата заявки:** ${new Date().toLocaleString('ru-RU')}\n\n` +
+                `📍 **Источник:** Сайт Amiron Restaurant`;
+        } else {
+            // Форматирование для отзыва
+            const stars = '⭐'.repeat(rating) + '☆'.repeat(5 - rating);
+            text = `📝 **Новый отзыв в ресторане AMIRON!**\n\n` +
+                `👤 **Имя:** ${name}\n` +
+                `📞 **Телефон:** ${phone || 'Не указан'}\n` +
+                `⭐ **Оценка:** ${rating}/5 ${stars}\n` +
+                `💬 **Отзыв:** ${message}\n\n` +
+                `🕐 **Дата:** ${new Date().toLocaleString('ru-RU')}`;
+        }
 
         const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
             method: 'POST',
@@ -39,7 +53,11 @@ export async function POST(request) {
         const data = await response.json();
 
         if (data.ok) {
-            return Response.json({ success: true, message: 'Отзыв отправлен! Спасибо за вашу оценку!' });
+            const successMessage = isBooking
+                ? 'Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.'
+                : 'Отзыв отправлен! Спасибо за вашу оценку!';
+
+            return Response.json({ success: true, message: successMessage });
         } else {
             console.error('Telegram API error:', data);
             return Response.json({
@@ -54,4 +72,4 @@ export async function POST(request) {
             message: error.message || 'Внутренняя ошибка сервера'
         }, { status: 500 });
     }
-};
+}

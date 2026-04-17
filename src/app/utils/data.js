@@ -1,4 +1,4 @@
-// Фото для блюд (URL из интернета)
+// Фото для блюд (локальные пути)
 export const menuData = {
     weddingHall: {
         title: "Свадебный зал",
@@ -7,6 +7,7 @@ export const menuData = {
         area: "250 м²",
         features: ["VIP зона", "Танцпол", "Сцена", "Караоке", "Светомузыка"],
         image: "https://images.unsplash.com/photo-1519167758483-8c5e8c6a2b8d?w=800",
+        video: "/videos/wedding-hall.mp4",
         menu: [
             {
                 category: "Холодные закуски",
@@ -41,35 +42,37 @@ export const menuData = {
             }
         ]
     },
-    banquetHall: {
-        title: "Банкетный зал",
-        description: "Просторный зал для банкетов, дней рождений и корпоративов",
-        capacity: "до 150 гостей",
-        area: "180 м²",
-        features: ["Проектор", "Экран", "Колонки", "Микрофоны", "Wi-Fi"],
-        image: "https://images.unsplash.com/photo-1519167758483-8c5e8c6a2b8d?w=800",
+    commonHall: {
+        title: "Общий зал",
+        description: "Уютный зал для семейных обедов и встреч с друзьями",
+        capacity: "до 50 гостей",
+        area: "80 м²",
+        features: ["Уютная атмосфера", "Семейная обстановка", "Быстрое обслуживание", "Детское меню", "Wi-Fi"],
+        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
+        video: "/videos/common-hall.mp4",
         menu: [
             {
-                category: "Закуски",
+                category: "Салаты",
                 items: [
-                    { name: "Овощной салат", price: "35 000", description: "Свежие овощи с авторской заправкой", image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" },
-                    { name: "Селедка под шубой", price: "48 000", description: "Традиционная с нори", image: "https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=400" },
-                    { name: "Тартар из лосося", price: "78 000", description: "Свежий лосось, авокадо, соус понзу", image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=400" }
+                    { name: "Салат греческий", price: "25 000", description: "Свежие овощи, фета, оливки, соус", image: "/images/menu/1.png" },
+                    { name: "Амирон салат", price: "30 000", description: "Авторский салат от шеф-повара", image: "/images/menu/2.png" },
+                    { name: "Салат баклажан", price: "30 000", description: "Печеные баклажаны с орехами", image: "/images/menu/3.png" }
                 ]
             },
             {
-                category: "Основные блюда",
+                category: "Горячие блюда",
                 items: [
-                    { name: "Шашлык из говядины", price: "45 000", description: "Мраморная говядина, подается с лавашом", image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" },
-                    { name: "Курица-гриль", price: "38 000", description: "Цыпленок с пряными травами", image: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=400" },
-                    { name: "Стейк Рибай", price: "95 000", description: "Мраморная говядина, овощи гриль", image: "https://images.unsplash.com/photo-1546964124-0cce460f38ef?w=400" }
+                    { name: "Шашлык Кусквой", price: "130 000", description: "Нежнейший шашлык из вырезки", image: "/images/menu/4.png" },
+                    { name: "Шашлык Куфта", price: "120 000", description: "Сочный шашлык из фарша", image: "/images/menu/5.png" },
+                    { name: "Парной тушёнка", price: "270 000", description: "Тушеная говядина с овощами (1 кг)", image: "/images/menu/6.png" },
+                    { name: "Вагурри", price: "250 000", description: "Мраморная говядина по-восточному (1 кг)", image: "/images/menu/7.png" },
+                    { name: "Мангал куриный", price: "95 000", description: "Курица на мангале с пряностями", image: "/images/menu/8.png" }
                 ]
             },
             {
-                category: "Банкетный сет",
+                category: "Выпечка",
                 items: [
-                    { name: "Банкетный сет", price: "1 800 000", description: "На 10 персон: 4 холодных, 2 горячих, гарнир, напитки", image: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400" },
-                    { name: "Корпоративный сет", price: "2 200 000", description: "На 10 персон: расширенное меню + фруктовая тарелка", image: "https://images.unsplash.com/photo-1555244162-803834f70033?w=400" }
+                    { name: "Самса", price: "10 000", description: "Сочная самса с мясом (1 шт)", image: "/images/menu/9.png" }
                 ]
             }
         ]
@@ -79,35 +82,69 @@ export const menuData = {
         description: "Уютная летняя терраса с видом на город",
         capacity: "до 80 гостей",
         area: "120 м²",
-        features: ["Летний душ", "Зонты", "Кальян", "Музыка", "Вечерняя подсветка"],
+        features: ["Летний душ", "Зонты", "Музыка", "Вечерняя подсветка"],
         image: "https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=800",
-        menu: [
-            {
-                category: "Летнее меню",
-                items: [
-                    { name: "Греческий салат", price: "42 000", description: "С фетой и оливками", image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400" },
-                    { name: "Брускетты", price: "28 000", description: "3 шт: с томатами, лососем, авокадо", image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400" },
-                    { name: "Том Ям", price: "68 000", description: "Острый суп с креветками", image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400" }
-                ]
-            },
-            {
-                category: "Пицца и Паста",
-                items: [
-                    { name: "Пицца Маргарита", price: "42 000", description: "Томатный соус, моцарелла, базилик", image: "https://images.unsplash.com/photo-1604382355076-af4b0eb60143?w=400" },
-                    { name: "Пицца Пепперони", price: "52 000", description: "Пепперони, моцарелла, томатный соус", image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400" },
-                    { name: "Паста Карбонара", price: "48 000", description: "С беконом и пармезаном", image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400" }
-                ]
-            },
-            {
-                category: "Напитки",
-                items: [
-                    { name: "Лимонад домашний", price: "25 000", description: "Мята, лайм, имбирь", image: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=400" },
-                    { name: "Мохито", price: "28 000", description: "Спрайт, мята, лайм", image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" },
-                    { name: "Чай узбекский", price: "15 000", description: "Зеленый чай с медом", image: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=400" }
-                ]
-            }
-        ]
+        video: "/videos/terrace.MP4",
+        menu: [] // Пока пусто, добавите позже
     }
+};
+
+// Данные для VIP залов
+export const vipHallsData = {
+    title: "VIP залы",
+    description: "Эксклюзивные пространства для особых мероприятий",
+    vipHalls: [
+        {
+            id: 1,
+            title: "VIP зал 1",
+            description: "Роскошный зал в золотых тонах для самых взыскательных гостей",
+            longDescription: "Эксклюзивный VIP зал оформлен в премиальном золотом стиле с использованием дорогих материалов. Идеальное место для проведения статусных мероприятий, деловых ужинов и семейных торжеств.",
+            image: "/images/halls/vip1.png",
+            video: "/videos/vip1.mp4",
+            gallery: [
+                "/images/halls/vip1.png"
+            ],
+            capacity: "до 18 гостей",
+            area: "120 м²",
+            price: "от 5 000 000 сум",
+            features: [
+                "Отдельный вход",
+                "Персональный шеф-повар",
+                "VIP меню",
+                "Караоке система",
+                "LED экран",
+                "Премиум аудиосистема",
+                "Отдельная парковка",
+                "Персональный официант"
+            ],
+            menu: [] // У VIP залов нет меню
+        },
+        {
+            id: 2,
+            title: "VIP зал 2",
+            description: "Элегантный зал в изумрудных тонах с панорамным видом",
+            longDescription: "Изысканный VIP зал оформлен в благородных изумрудных оттенках. Панорамные окна открывают захватывающий вид на город.",
+            image: "/images/halls/vip2.png",
+            video: "/videos/vip2.mp4",
+            gallery: [
+                "/images/halls/vip2.png"
+            ],
+            capacity: "до 10 гостей",
+            area: "90 м²",
+            price: "от 4 000 000 сум",
+            features: [
+                "Панорамный вид",
+                "Персональный шеф-повар",
+                "Эксклюзивное меню",
+                "Кальянная комната",
+                "DJ пульт",
+                "Светомузыка",
+                "Отдельная терраса",
+                "VIP трансфер"
+            ],
+            menu: [] // У VIP залов нет меню
+        }
+    ]
 };
 
 export const restaurantInfo = {

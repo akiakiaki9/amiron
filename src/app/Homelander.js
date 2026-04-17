@@ -37,19 +37,17 @@ export default function Homelander() {
             icon: <FaChampagneGlasses />,
             href: "/wedding-hall",
             color: "red",
-            features: ["до 200 гостей", "VIP зона", "Танцпол", "Светомузыка"],
-            image: "https://zukhrotravel.com/wp-content/uploads/2024/12/2-5.jpg",
-            price: "от 2 500 000 сум"
+            features: ["до 300 гостей", "VIP зона", "Танцпол", "Светомузыка"],
+            image: "/images/halls/wedding-hall.png"
         },
         {
-            title: "Банкетный зал",
+            title: "Общий зал",
             description: "Идеальное место для проведения банкетов и корпоративов",
             icon: <FaUtensils />,
-            href: "/banquet-hall",
+            href: "/common-hall",
             color: "green",
-            features: ["до 150 гостей", "Проектор", "Колонки", "Wi-Fi"],
-            image: "https://www.centralasia-travel.com/upload/tiles/grand-bukhara-hotel-14.jpg",
-            price: "от 1 800 000 сум"
+            features: ["до 120 гостей", "Проектор", "Колонки", "Wi-Fi"],
+            image: "/images/halls/common-hall.png"
         },
         {
             title: "Терраса",
@@ -57,9 +55,8 @@ export default function Homelander() {
             icon: <FiSun />,
             href: "/terrace",
             color: "red",
-            features: ["до 80 гостей", "Кальян", "Подсветка", "Летний душ"],
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsb53Ymrd7WYV8d-2E9Z3PKJ8etyXf8SS0Xw&s",
-            price: "от 1 200 000 сум"
+            features: ["до 200 гостей", "Подсветка", "Летний душ"],
+            image: "/images/halls/terrace.png"
         }
     ];
 
