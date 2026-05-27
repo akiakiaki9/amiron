@@ -14,6 +14,11 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Amiron Ресторан первоклассный в Бухаре",
   description: "Ресторан Amiron в Бухаре предлагает первоклассные блюда узбекской кухни в уютной атмосфере. Наслаждайтесь традиционными вкусами и гостеприимством в нашем ресторане.",
+  icons: {
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -22,4 +27,4 @@ export default function RootLayout({ children }) {
       <body>{children}</body>
     </html>
   );
-};
+}
